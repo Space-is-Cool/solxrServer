@@ -18,7 +18,7 @@ const emailBlast = (credA, credB) => {
     }
   });
 
-  const weeklyEmail = new CronJob('*/5 * * * *', async () => {
+  const weeklyEmail = new CronJob('0 10 * * sun', async () => {
 
     const userList = await User.findAll({
       where: {

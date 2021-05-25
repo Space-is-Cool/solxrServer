@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const { User, Iotd } = require ('../db');
 
 router.post('/create', async (req, res) => {
