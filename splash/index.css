@@ -1,0 +1,111 @@
+
+    /* Parallax base styles
+    --------------------------------------------- */
+    @keyframes fadeIn {
+      0% {opacity: 0;}
+      100% {opacity: 1;}
+   } 
+
+   @-webkit-keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+ }
+
+ .fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+   .animated {
+    -webkit-animation-duration: 10s;
+    animation-duration: 10s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+ }
+
+    body {
+        background-color: black;
+        font-family: 'Titillium Web', sans-serif;
+      }
+
+    .parallax {
+      height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      -webkit-perspective: 1px;
+      perspective: 1px;
+    }
+  
+    .parallax__layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  
+    .parallax__layer--text {
+      -webkit-transform: translateZ(0px);
+      transform: translateZ(0px);
+    }
+  
+    .parallax__layer--image {
+      -webkit-transform: translateZ(-0.8px);
+      transform: translateZ(-0.8px);
+    }
+    
+    .parallax {
+      font-size: 200%;
+    }
+  
+     .image {
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        border-width: 5px;
+        border-style: solid;
+        border-color: white;
+      }
+
+    .text-a {
+      position:absolute;
+      left: 5%;
+      top: 2%;
+      color: white;
+      font-family: 'Titillium Web', sans-serif;
+      font-weight: 900;
+    }
+
+    .text-b {
+      position:absolute;
+      left: 5%;
+      bottom: 2%;
+      color: white;
+      font-family: 'Titillium Web', sans-serif;
+      font-weight: 900;
+    }
+
+    .button {
+        background-color: rgba(0, 0, 0, 0);
+        border: solid;
+        border-color: white;
+        color: white;
+        padding: 4px 32px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+  input[type=text] {
+    background-color: rgba(0, 0, 0, 0);
+    width: 40%;
+    margin: 4px 2px;
+    box-sizing: border-box;
+    border: solid;
+    border-color: white;
+    color: white;
+    font-size: 20px;
+    vertical-align: middle;
+  }
