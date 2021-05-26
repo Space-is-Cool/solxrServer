@@ -1,12 +1,10 @@
 /* eslint-disable no-unused-vars */
-const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const indexRouter = require('./routes/server');
 const usersRouter = require('./routes/users');
-const nasaRouter = require('./routes/nasa');
 
 const app = express();
 
@@ -16,9 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'splash')));
 
-// app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/nasa', nasaRouter);
 
 // error handler
 app.use(function(err, req, res, next) {
