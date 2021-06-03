@@ -60,13 +60,10 @@
   
      .image {
         position: absolute;
-        left: 50%;
-        top: 200%;
+        left: 800px;
+        top: 270%;
         -webkit-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
-        border-width: 5px;
-        border-style: solid;
-        border-color: white;
       }
 
       .screenshot {
@@ -74,18 +71,17 @@
         margin: 10px;
         margin-left: 20px;
         margin-right: 20px;
-      }
-
-      .screenshot-set {
-        border-color: rgba(243, 243, 243, 0.719);
-        border-width: 4px;
-        border-style: solid;
-        border-radius: 20px;
-        background-color: rgba(0, 0, 0, 0.808);
         padding: 15px;
         padding-left: 25px;
         padding-top: 25px;
+        border-color: rgba(243, 243, 243, 0.719);
+        border-width: 4px;
+        border-style: solid;
+        background-color: rgba(0, 0, 0, 0.808);
+
       }
+
+
 
     .text-a {
       position:absolute;
@@ -96,8 +92,8 @@
       font-weight: 900;
     }
     .audio {
-      position:absolute;
-      top: 16%;
+      /* position:absolute; */
+      top: 36%;
     }
 
     .text-b {
