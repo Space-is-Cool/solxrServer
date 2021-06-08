@@ -8,8 +8,4 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-// console.log('whats the valu of router right here', router);
-// router.listen(8000, () => {
-// console.log('http://localhost:8000');
-// });
 module.exports = router;

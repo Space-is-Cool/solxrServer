@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const { User, Iotd } = require ('../db');
+const path = require('path');
+
 
 router.post('/create', async (req, res) => {
   const {username, password} = req.body;
@@ -99,23 +101,24 @@ router.get('/email/subscribe', (req, res) => {
       where: {email}
     }).then(user => {
       if (user.length) {
-        console.log('user already exists');
       } else {
         User.create({email});
       }
+      res.sendFile(path.join(__dirname, '../splash/subscribe.html'));
     });
   }
+})
 
-  router.get('/email/unsubscribe', (req, res) => {
-    const { email } = req.query;
-    const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    if (email.match(regex)) {
-      User.destroy({
-        where: {email}
-      });
-    }
-  });
-  res.redirect('/');
+router.get('/email/unsubscribed', (req, res) => {
+  const { email } = req.query;
+  const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  if (email.match(regex)) {
+    User.destroy({
+      where: {email}
+    }).then(() => {
+      res.sendFile(path.join(__dirname, '../splash/unsubscribed.html'));
+    });
+  }
 });
 
 module.exports = router;

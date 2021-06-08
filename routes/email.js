@@ -18,7 +18,8 @@ const emailBlast = (credA, credB) => {
     }
   });
 
-  const weeklyEmail = new CronJob('0 10 * * sun', async () => {
+  
+  const weeklyEmail = new CronJob('0 2 * * *', async () => {
 
     const userList = await User.findAll({
       where: {
@@ -38,24 +39,18 @@ const emailBlast = (credA, credB) => {
         const formatDate = [eventDate.slice(4, 6), eventDate.slice(6), eventDate.slice(0, 4)].join('-');
         return [summary, formatDate, description].join('\n');
     
-      }).join('\n\n').concat('\n\n Unsubscribe \n\n http://ec2-3-134-108-148.us-east-2.compute.amazonaws.com:3001/unsubscribe')
+      }).join('\n\n').concat('\n\n\n Unsubscribe: \n http://solxrapp.com/unsubscribe')
         .toString();
     };
 
     const body = {
       from: 'solxrweekly@gmail.com',
-      to: userList,
-      subject: 'Solxr Weekly: Visible astral events for the coming week!',
+      to: 'solxrweekly@gmail.com',
+      bcc: userList,
+      subject: 'Visible astral events for the coming week!',
       text: emailBody(eventsData)
     };
-    
-    transporter.sendMail(body, function(err, info) {
-      if (err) {
-        console.warn(err);
-      } else {
-        console.info('email success', info.response);
-      }
-    });
+
   });
   weeklyEmail.start();
 };
