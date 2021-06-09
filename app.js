@@ -16,6 +16,39 @@ app.use(express.static(path.join(__dirname, 'splash')));
 
 app.use('/users', usersRouter);
 
+app.get('/subscribe', (req, res) => {
+  const { email } = req.query;
+  const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+  if (email.match(regex)) {
+    User.findAll({
+      where: {email}
+    }).then(user => {
+      if (user.length) {
+      } else {
+        User.create({email});
+      }
+      res.sendFile(path.join(__dirname, './splash/subscribe.html'));
+    });
+  }
+})
+
+app.get('/unsubscribe', (req, res) => {
+  res.sendFile(path.join(__dirname, './splash/unsubscribe.html'));
+});
+
+// app.get('/unsubscribed', (req, res) => {
+//   const { email } = req.query;
+//   const regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+//   if (email.match(regex)) {
+//     User.destroy({
+//       where: {email}
+//     }).then(() => {
+//       res.sendFile(path.join(__dirname, './splash/unsubscribed.html'));
+//     });
+//   }
+// });
+
 // error handler
 app.use(function(err, req, res, next) {
 //   // set locals, only providing error in development
